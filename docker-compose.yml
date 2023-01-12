@@ -3,20 +3,23 @@ services:
   haystack-api:
     # Pull Haystack's latest commit
     image: "deepset/haystack:cpu-main"
+    build:
+      context: ui
+      dockerfile: Dockerfile
     ports:
       - 8000:8000
     restart: on-failure
     environment:
       # See rest_api/pipeline/pipelines.haystack-pipeline.yml for configurations of Search & Indexing Pipeline.
       - DOCUMENTSTORE_PARAMS_HOST=elasticsearch
-      - PIPELINE_YAML_PATH=/rest_api/pipeline/pipelines.haystack-pipeline.yml
+      - PIPELINE_YAML_PATH=/home/user/rest_api/pipeline/pipelines.haystack-pipeline.yml
       - QUERY_PIPELINE_NAME=query
       - TOKENIZERS_PARALLELISM=false
     depends_on:
       elasticsearch:
         condition: service_healthy
     volumes:
-      - ./rest_api/pipeline:/rest_api/pipeline
+      - ./rest_api/pipeline:/home/user/rest_api/pipeline
 
   elasticsearch:
     # This image is "ready-to-query" with some indexed articles
