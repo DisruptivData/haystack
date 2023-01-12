@@ -16,7 +16,7 @@ def cache_models(models: Optional[List[str]] = None, use_auth_token: Optional[Un
     """
     # Backward compat after adding the `model` param
     if models is None:
-        models = ["deepset/roberta-base-squad2"]
+        models = ["exafluence/BERT-ClinicalQA"]
 
     # download punkt tokenizer
     logging.info("Caching punkt data")
