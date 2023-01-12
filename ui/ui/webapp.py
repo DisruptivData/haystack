@@ -13,8 +13,8 @@ from ui.utils import haystack_is_ready, query, send_feedback, upload_doc, haysta
 
 
 # Adjust to a question that you would like users to see in the search bar when they load the UI:
-DEFAULT_QUESTION_AT_STARTUP = os.getenv("DEFAULT_QUESTION_AT_STARTUP", "What's the capital of France?")
-DEFAULT_ANSWER_AT_STARTUP = os.getenv("DEFAULT_ANSWER_AT_STARTUP", "Paris")
+DEFAULT_QUESTION_AT_STARTUP = os.getenv("DEFAULT_QUESTION_AT_STARTUP", "Which stem cells are more interesting and why?")
+DEFAULT_ANSWER_AT_STARTUP = os.getenv("DEFAULT_ANSWER_AT_STARTUP", "Mesenchymal stem cells are the most interesting because when they get placed in the right environment and are coupled with the proper growth factors")
 
 # Sliders
 DEFAULT_DOCS_FROM_RETRIEVER = int(os.getenv("DEFAULT_DOCS_FROM_RETRIEVER", "3"))
@@ -34,7 +34,7 @@ def set_state_if_absent(key, value):
 
 def main():
 
-    st.set_page_config(page_title="Haystack Demo", page_icon="https://haystack.deepset.ai/img/HaystackIcon.png")
+    st.set_page_config(page_title="Haystack Exafluence Demo", page_icon="https://www.exafluence.com/hs-fs/hubfs/exf-company%20-logo-1.png?width=300&name=exf-company%20-logo-1.png")
 
     # Persistent state
     set_state_if_absent("question", DEFAULT_QUESTION_AT_STARTUP)
@@ -50,13 +50,9 @@ def main():
         st.session_state.raw_json = None
 
     # Title
-    st.write("# Haystack Demo - Explore the world")
+    st.write("# Haystack Demo")
     st.markdown(
         """
-This demo takes its data from a selection of Wikipedia pages crawled in November 2021 on the topic of
-
-<h3 style='text-align:center;padding: 0 0 1rem;'>Countries and capital cities</h3>
-
 Ask any question on this topic and see if Haystack can find the correct answer to your query!
 
 *Note: do not use keywords, but full-fledged questions.* The demo is not optimized to deal with keyword queries and might misunderstand you.
@@ -123,12 +119,6 @@ Ask any question on this topic and see if Haystack can find the correct answer t
             opacity: 0;
         }}
     </style>
-    <div class="haystack-footer">
-        <hr />
-        <h4>Built with <a href="https://www.deepset.ai/haystack">Haystack</a>{hs_version}</h4>
-        <p>Get it on <a href="https://github.com/deepset-ai/haystack/">GitHub</a> &nbsp;&nbsp; - &nbsp;&nbsp; Read the <a href="https://haystack.deepset.ai/overview/intro">Docs</a></p>
-        <small>Data crawled from <a href="https://en.wikipedia.org/wiki/Category:Lists_of_countries_by_continent">Wikipedia</a> in November 2021.<br />See the <a href="https://creativecommons.org/licenses/by-sa/3.0/">License</a> (CC BY-SA 3.0).</small>
-    </div>
     """,
         unsafe_allow_html=True,
     )
