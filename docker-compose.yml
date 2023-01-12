@@ -12,7 +12,7 @@ services:
     environment:
       # See rest_api/pipeline/pipelines.haystack-pipeline.yml for configurations of Search & Indexing Pipeline.
       - DOCUMENTSTORE_PARAMS_HOST=elasticsearch
-      - PIPELINE_YAML_PATH=/home/user/rest_api/pipeline/pipelines.haystack-pipeline.yml
+      - PIPELINE_YAML_PATH=/home/user/rest_api/rest_api/pipeline/pipelines.haystack-pipeline.yml
       - QUERY_PIPELINE_NAME=query
       - TOKENIZERS_PARALLELISM=false
     depends_on:

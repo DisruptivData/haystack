@@ -37,7 +37,6 @@ RUN pip install --no-cache-dir .[docstores,crawler,preprocessing,ocr,ray]
 RUN pip install --no-cache-dir rest_api/
 RUN ls /home/user
 RUN ls /home/user/rest_api
-RUN ls /home/user/rest_api/pipeline
 RUN pip freeze
 RUN python3 -c "from haystack.utils.docker import cache_models;cache_models()"
 
