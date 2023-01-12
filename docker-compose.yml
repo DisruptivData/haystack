@@ -9,12 +9,14 @@ services:
     environment:
       # See rest_api/pipeline/pipelines.haystack-pipeline.yml for configurations of Search & Indexing Pipeline.
       - DOCUMENTSTORE_PARAMS_HOST=elasticsearch
-      - PIPELINE_YAML_PATH=/opt/venv/lib/python3.10/site-packages/rest_api/pipeline/pipelines.haystack-pipeline.yml
+      - PIPELINE_YAML_PATH=/rest_api/pipeline/pipelines.haystack-pipeline.yml
       - QUERY_PIPELINE_NAME=query
       - TOKENIZERS_PARALLELISM=false
     depends_on:
       elasticsearch:
         condition: service_healthy
+    volumes:
+      - ./rest_api/pipeline:/rest_api/pipeline
 
   elasticsearch:
     # This image is "ready-to-query" with some indexed articles
