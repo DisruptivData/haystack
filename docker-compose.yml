@@ -2,7 +2,10 @@ services:
 
   haystack-api:
     # Pull Haystack's latest commit
-    image: "deepset/haystack:cpu-main"
+    # image: "deepset/haystack:cpu-main"
+    build:
+      context: .
+      dockerfile: Dockerfile
     ports:
       - 8000:8000
     restart: on-failure
@@ -15,8 +18,8 @@ services:
     depends_on:
       elasticsearch:
         condition: service_healthy
-    volumes:
-      - ./rest_api/pipeline:/home/user/rest_api/pipeline
+    # volumes:
+    #   - ./rest_api/pipeline:/home/user/rest_api/pipeline
 
   elasticsearch:
     # This image is "ready-to-query" with some indexed articles
